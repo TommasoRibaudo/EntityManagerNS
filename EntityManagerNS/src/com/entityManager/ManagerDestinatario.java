@@ -19,14 +19,15 @@ public class ManagerDestinatario extends Manager {
 		try {
 			this.startEntityManagerFactory();
 			this.query = this.getEm().createNamedQuery("Destinatario.findAll", Destinatario.class);
-			
+			return query.getResultList();
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		} finally {
 			this.stopEntityManagerFactory();
-			return query.getResultList();
+			
 		}
+		return null;
 	}
 
 	
@@ -38,13 +39,13 @@ public class ManagerDestinatario extends Manager {
 			this.destinatario = this.getEm().createNamedQuery("Destinatario.findOne", Destinatario.class).
 					setParameter("param", id).getSingleResult();
 			
-			return this.destinatario;
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			this.stopEntityManagerFactory();
-			return destinatario;
+			return this.destinatario;
 		}
 
 	}
@@ -66,7 +67,9 @@ public class ManagerDestinatario extends Manager {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		} else 
+			System.out.print("Trying to use an invalid object, error.");
+		
 	}
 
 	@Override
@@ -78,7 +81,7 @@ public class ManagerDestinatario extends Manager {
 				this.startEntityManagerFactory();
 
 				this.getEm().getTransaction().begin();
-				this.getEm().remove(o);
+				this.getEm().remove(this.getEm().contains(o) ? o : this.getEm().merge(o));
 				this.getEm().getTransaction().commit();
 
 				
@@ -87,7 +90,8 @@ public class ManagerDestinatario extends Manager {
 			} finally {
 				this.stopEntityManagerFactory();
 			}
-		}
+		} else 
+			System.out.print("Trying to use an invalid object, error.");
 	}
 
 	@Override
@@ -109,7 +113,9 @@ public class ManagerDestinatario extends Manager {
 			} finally {
 				this.stopEntityManagerFactory();
 			}
-		}
+		} else 
+			System.out.print("Trying to use an invalid object, error.");
+		
 	}
 
 }
