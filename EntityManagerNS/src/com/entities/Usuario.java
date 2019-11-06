@@ -1,5 +1,6 @@
-package com.entity;
+package com.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,10 +15,13 @@ public class Usuario implements Serializable {
 	private String correoUsuario;
 	private int authId;
 	private String contrasenna;
-	@OneToMany (mappedBy="usuario", cascade = CascadeType.ALL)
+	@OneToMany (fetch = FetchType.EAGER, mappedBy="usuario", cascade = CascadeType.MERGE)
 	private Set<Correo> correos;
 	
 	
+	public Usuario() {
+		this.setCorreos(new HashSet<Correo>());
+	}
 	public String getCorreoUsuario() {
 		return correoUsuario;
 	}

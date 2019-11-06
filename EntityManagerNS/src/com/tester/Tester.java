@@ -1,16 +1,15 @@
 package com.tester;
 
-import com.entityManager.*;
-
 import java.util.HashSet;
 import java.util.List;
 
-import com.entity.*;
+import com.entities.*;
+import com.entityServices.*;
 
 public class Tester {
 
 	public static void main(String[] args) {
-		Manager md = new ManagerDestinatario();
+		Service md = new ServiceDestinatario();
 		System.out.print("Starting...");
 		md.startEntityManagerFactory();
 		 	/*Destinatario d= new Destinatario();

@@ -1,9 +1,9 @@
-package com.entityManager;
+package com.entityServices;
 
 import java.util.List;
 import java.util.Set;
 
-public interface Manageable {
+public interface Serviceable {
 
 	/**
 	 * 

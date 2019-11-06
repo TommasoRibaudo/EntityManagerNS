@@ -1,12 +1,12 @@
-package com.entityManager;
+package com.entityServices;
 
 import java.util.List;
-import com.entity.Usuario;
+import java.util.Set;
 
-public class ManagerUsuario extends Manager{
+public class ServiceCorreo extends Service {
 
 	@Override
-	public List<Usuario> selectAll() {
+	public List<?> selectAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -34,5 +34,6 @@ public class ManagerUsuario extends Manager{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

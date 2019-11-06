@@ -1,7 +1,8 @@
-package com.entity;
+package com.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -22,10 +23,13 @@ public class Correo implements Serializable {
 	@JoinColumn(name = "id_usuario", referencedColumnName="id")
 	private Usuario usuario;
 	
-	@OneToMany (mappedBy="correoFrom", cascade = CascadeType.ALL)
+	@OneToMany (fetch = FetchType.EAGER, mappedBy="correoFrom", cascade = CascadeType.MERGE)
 	private Set<Destinatario> destinatarios;
 	
 	
+	public Correo() {
+		this.setDestinatarios(new HashSet<Destinatario>());
+	}
 	public String getCuerpo() {
 		return cuerpo;
 	}

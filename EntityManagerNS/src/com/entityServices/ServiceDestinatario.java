@@ -1,14 +1,14 @@
-package com.entityManager;
+package com.entityServices;
 
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.TypedQuery;
 
-import com.entity.Destinatario;  
+import com.entities.Destinatario;  
 /**/
 @SuppressWarnings("finally")
-public class ManagerDestinatario extends Manager {
+public class ServiceDestinatario extends Service {
 
 	private TypedQuery<Destinatario> query;
 	private Destinatario destinatario;

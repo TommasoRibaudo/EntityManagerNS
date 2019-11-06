@@ -5,9 +5,9 @@
 	<persistence-unit name="EntityManagerNS" 
 		transaction-type="RESOURCE_LOCAL">
 		
-		<class>com.entity.Usuario</class>
-		<class>com.entity.Destinatario</class>
-		<class>com.entity.Correo</class>
+		<class>com.entities.Usuario</class>
+		<class>com.entities.Destinatario</class>
+		<class>com.entities.Correo</class>
 		<properties>
 			<property name="eclipselink.deploy-on-startup" value="true" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://devtest.cqbmzwzrfjw3.us-east-2.rds.amazonaws.com"/>

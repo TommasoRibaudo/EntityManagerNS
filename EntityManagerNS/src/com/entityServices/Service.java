@@ -1,10 +1,10 @@
-package com.entityManager;
+package com.entityServices;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public abstract class Manager implements Manageable {
+public abstract class Service implements Serviceable {
 
 	private EntityManager em = null;
 	private EntityManagerFactory entityManagerFactory = null;
