@@ -7,18 +7,27 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "usuarios", schema = "ProyectoDiseñoConceptual")
+@NamedQueries (value = {
+		@NamedQuery(
+				name = "Usuario.findAll", 
+				query = "SELECT u FROM Usuario u"),
+		@NamedQuery(
+				name = "Usuario.findOne", 
+				query = "SELECT u FROM Usuario u WHERE u.id = :param ")
+})
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
 	private int id; 
 	private String correoUsuario;
-	private int authId;
+	private String authId;
 	private String contrasenna;
 	@OneToMany (fetch = FetchType.EAGER, mappedBy="usuario", cascade = CascadeType.MERGE)
 	private Set<Correo> correos;
-	
-	
+	private String photoUrl;
+	private String session;
+	private String name;
 	public Usuario() {
 		this.setCorreos(new HashSet<Correo>());
 	}
@@ -28,10 +37,10 @@ public class Usuario implements Serializable {
 	public void setCorreoUsuario(String correoUsuario) {
 		this.correoUsuario = correoUsuario;
 	}
-	public int getAuthId() {
+	public String getAuthId() {
 		return authId;
 	}
-	public void setAuthId(int authId) {
+	public void setAuthId(String authId) {
 		this.authId = authId;
 	}
 	public String getContrasenna() {
@@ -49,5 +58,24 @@ public class Usuario implements Serializable {
 	public int getId() {
 		return id;
 	}
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+	public String getSession() {
+		return session;
+	}
+	public void setSession(String session) {
+		this.session = session;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 
 }

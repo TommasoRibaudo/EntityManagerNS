@@ -17,15 +17,12 @@ public class ServiceDestinatario extends Service {
 	public List<Destinatario> selectAll() 
 	{
 		try {
-			this.startEntityManagerFactory();
+			
 			this.query = this.getEm().createNamedQuery("Destinatario.findAll", Destinatario.class);
 			return query.getResultList();
 		} catch (Exception e) {
 			
 			e.printStackTrace();
-		} finally {
-			this.stopEntityManagerFactory();
-			
 		}
 		return null;
 	}
@@ -35,7 +32,7 @@ public class ServiceDestinatario extends Service {
 	public Object selectRegister(int id) 
 	{
 		try {
-			this.startEntityManagerFactory();
+			
 			this.destinatario = this.getEm().createNamedQuery("Destinatario.findOne", Destinatario.class).
 					setParameter("param", id).getSingleResult();
 			
@@ -44,7 +41,7 @@ public class ServiceDestinatario extends Service {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			this.stopEntityManagerFactory();
+			
 			return this.destinatario;
 		}
 
@@ -57,13 +54,13 @@ public class ServiceDestinatario extends Service {
 		{
 			try 
 			{
-				this.startEntityManagerFactory();
+				
 
 				this.getEm().getTransaction().begin();
 				this.getEm().merge(o);
 				this.getEm().getTransaction().commit();
 
-				this.stopEntityManagerFactory();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -78,7 +75,7 @@ public class ServiceDestinatario extends Service {
 		if (o instanceof Destinatario)
 		{
 			try {
-				this.startEntityManagerFactory();
+				
 
 				this.getEm().getTransaction().begin();
 				this.getEm().remove(this.getEm().contains(o) ? o : this.getEm().merge(o));
@@ -87,9 +84,7 @@ public class ServiceDestinatario extends Service {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				this.stopEntityManagerFactory();
-			}
+			} 
 		} else 
 			System.out.print("Trying to use an invalid object, error.");
 	}
@@ -101,7 +96,7 @@ public class ServiceDestinatario extends Service {
 		{
 			try 
 			{
-				this.startEntityManagerFactory();
+				
 				
 				this.getEm().getTransaction().begin();
 				this.getEm().persist(o);
@@ -110,9 +105,7 @@ public class ServiceDestinatario extends Service {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} finally {
-				this.stopEntityManagerFactory();
-			}
+			} 
 		} else 
 			System.out.print("Trying to use an invalid object, error.");
 		

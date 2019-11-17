@@ -13,16 +13,13 @@ public class ServiceCorreo extends Service {
 	public List<Correo> selectAll() 
 	{
 		try {
-			this.startEntityManagerFactory();
+			
 			this.query = this.getEm().createNamedQuery("Correo.findAll", Correo.class);
 			return query.getResultList();
 		} catch (Exception e) {
 			
 			e.printStackTrace();
-		} finally {
-			this.stopEntityManagerFactory();
-			
-		}
+		} 
 		return null;
 	}
 
@@ -31,7 +28,7 @@ public class ServiceCorreo extends Service {
 	public Object selectRegister(int id) 
 	{
 		try {
-			this.startEntityManagerFactory();
+			
 			this.correo = this.getEm().createNamedQuery("Correo.findOne", Correo.class).
 					setParameter("param", id).getSingleResult();
 			
@@ -40,7 +37,7 @@ public class ServiceCorreo extends Service {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			this.stopEntityManagerFactory();
+			
 			return this.correo;
 		}
 
@@ -53,13 +50,13 @@ public class ServiceCorreo extends Service {
 		{
 			try 
 			{
-				this.startEntityManagerFactory();
+				
 
 				this.getEm().getTransaction().begin();
 				this.getEm().merge(o);
 				this.getEm().getTransaction().commit();
 
-				this.stopEntityManagerFactory();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -74,7 +71,7 @@ public class ServiceCorreo extends Service {
 		if (o instanceof Correo)
 		{
 			try {
-				this.startEntityManagerFactory();
+				
 
 				this.getEm().getTransaction().begin();
 				this.getEm().remove(this.getEm().contains(o) ? o : this.getEm().merge(o));
@@ -83,8 +80,6 @@ public class ServiceCorreo extends Service {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				this.stopEntityManagerFactory();
 			}
 		} else 
 			System.out.print("Trying to use an invalid object, error.");
@@ -97,7 +92,7 @@ public class ServiceCorreo extends Service {
 		{
 			try 
 			{
-				this.startEntityManagerFactory();
+				
 				
 				this.getEm().getTransaction().begin();
 				this.getEm().persist(o);
@@ -106,9 +101,7 @@ public class ServiceCorreo extends Service {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} finally {
-				this.stopEntityManagerFactory();
-			}
+			} 
 		} else 
 			System.out.print("Trying to use an invalid object, error.");
 		

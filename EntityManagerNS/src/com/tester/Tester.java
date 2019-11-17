@@ -9,9 +9,10 @@ import com.entityServices.*;
 public class Tester {
 
 	public static void main(String[] args) {
-		Service md = new ServiceDestinatario();
+		Service md = new ServiceUsuario();
 		System.out.print("Starting...");
-		md.startEntityManagerFactory();
+		
+		
 		 	/*Destinatario d= new Destinatario();
 		 	d.setCorreoTo("mynew@correo.com");
 			Correo c = new Correo ();
@@ -31,9 +32,11 @@ public class Tester {
 		{
 			System.out.print(d.getCorreoTo());
 		}*/
-		Destinatario d = (Destinatario) md.selectRegister(1);
-				
-		md.stopEntityManagerFactory();
+		Usuario usuario = new Usuario();
+		usuario.setAuthId("321123");
+		usuario.setCorreoUsuario("11223");
+		md.insert(usuario);		
+		
 		System.out.print("Done...");
 
 
